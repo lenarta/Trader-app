@@ -1,34 +1,20 @@
 import React from 'react';
-import { Route, Link, useRouteMatch } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import Trading from '../Trading/Trading';
 import History from '../History/History';
 import './MainPanel.css';
 
 function MainPanel() {
-  const LeaderboardLink = ({ label, to, activeOnlyWhenExact }) => {
-    const match = useRouteMatch({
-      path: to,
-      exact: activeOnlyWhenExact,
-    });
-
-    return (
-      <div className={match ? 'active' : 'inactive'}>
-        {match && ''}
-        <Link to={to}>{label}</Link>
-      </div>
-    );
-  };
-
   return (
-    <div className="leaderboard-container">
-      <div className="leaderboardLinks">
-        <LeaderboardLink to="/trading" label="Trading" />
-        <LeaderboardLink to="/history" label="History" />
+    <div className="main-panel-container">
+      <div className="main-panel-links">
+        <NavLink to="/main/trading" className="main-panel-link" activeClassName="selected">Trading</NavLink>
+        <NavLink to="/main/history" className="main-panel-link" activeClassName="selected">History</NavLink>
       </div>
-      <Route exact path="/trading">
+      <Route exact path="/main/trading">
         <Trading />
       </Route>
-      <Route path="/history">
+      <Route path="/main/history">
         <History />
       </Route>
     </div>

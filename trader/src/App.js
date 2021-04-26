@@ -20,7 +20,9 @@ function App() {
           <Route exact path="/">
             <Redirect to="/login" />
           </Route>
-          <Route path="/main"></Route>
+          <Route path="/main">
+            <MainPanel />
+          </Route>
           <Route path="/register">
             <Register />
           </Route>
