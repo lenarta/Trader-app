@@ -1,29 +1,29 @@
 import React from 'react';
-import { Router, Route, NavLink } from 'react-router-dom';
+import { Route, Link, useRouteMatch } from 'react-router-dom';
 import Trading from '../Trading/Trading';
 import History from '../History/History';
 import './MainPanel.css';
 
 function MainPanel() {
-  
+  const LeaderboardLink = ({ label, to, activeOnlyWhenExact }) => {
+    const match = useRouteMatch({
+      path: to,
+      exact: activeOnlyWhenExact,
+    });
+
+    return (
+      <div className={match ? 'active' : 'inactive'}>
+        {match && ''}
+        <Link to={to}>{label}</Link>
+      </div>
+    );
+  };
+
   return (
-    <div className="main-panel-container">
-        <Router>
-      <div className="main-panel-links">
-      <NavLink
-        to="/trading"
-        className="menu-button"
-        activeClassName="-active"
-      >
-        <div className="menu-title">Traiding</div>
-      </NavLink>
-      <NavLink
-        to="/history"
-        className="menu-button"
-        activeClassName="-active"
-      >
-        <div className="menu-title">History</div>
-      </NavLink>
+    <div className="leaderboard-container">
+      <div className="leaderboardLinks">
+        <LeaderboardLink to="/trading" label="Trading" />
+        <LeaderboardLink to="/history" label="History" />
       </div>
       <Route exact path="/trading">
         <Trading />
@@ -31,7 +31,6 @@ function MainPanel() {
       <Route path="/history">
         <History />
       </Route>
-        </Router>
     </div>
   );
 }
