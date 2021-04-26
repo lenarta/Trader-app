@@ -1,5 +1,5 @@
 .login-page {
-  height: 80vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #c9cccddc;
+  background-color: rgba(255, 255, 255, 0.685);
   color: white;
 }
 [class*='login-input'] {
@@ -47,7 +47,7 @@
   outline: none;
 }
 .login-btn:hover {
-  background-color: #29bb24;
+  background-color: #1857df;
 }
 .login-btn:active {
   transform: scale(0.9);
