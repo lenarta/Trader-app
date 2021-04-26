@@ -1,5 +1,5 @@
 import React from 'react';
-import './MainPanel.css';
+import './History.css';
 
 function History() {
   return (

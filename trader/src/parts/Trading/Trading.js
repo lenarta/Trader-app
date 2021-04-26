@@ -1,5 +1,5 @@
 import React from 'react';
-import './MainPanel.css';
+import './Trading.css';
 
 function Trading() {
   return (

@@ -8,6 +8,7 @@ import {
 import Header from './parts/Header/Header';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import MainPanel from './parts/MainPanel/MainPanel'
 import './App.css';
 
 function App() {
