@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import deleteStoreAction from '../../actions/deleteStore';
 import './Header.css';
@@ -14,6 +14,7 @@ const Header = () => {
   const accessToken = new Cookies().get('accessToken');
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
 
   const handleLogoutClick = () => {
     history.push('/login');
@@ -27,8 +28,8 @@ const Header = () => {
         <h1>Trader</h1>
       </Link>
       <div className="headerLinks">
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        {location.pathname === '/register' && <Link to="/login">Login</Link>}
+        {location.pathname === '/login' && <Link to="/register">Register</Link>}
       </div>
     </nav>
   );
