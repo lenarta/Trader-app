@@ -8,7 +8,9 @@ import './Header.css';
 const Header = () => {
   const cookie = new Cookies();
   const username = useSelector((state) => state.login.data.sub);
-  const token = useSelector((state) => state.login.token);
+  const token =
+    useSelector((state) => state.login.token) ||
+    localStorage.getItem('accessToken');
   const accessToken = new Cookies().get('accessToken');
   const dispatch = useDispatch();
   const history = useHistory();
@@ -34,11 +36,11 @@ const Header = () => {
   const setHeaderToMain = (
     <nav className="header">
       <Link to="/main">
-        <h1>Welcome to Meme Society</h1>
+        <h1>Welcome to Trader</h1>
       </Link>
       <div className="headerLinks">
         <Link to="/memes"> {username} </Link>
-        <Link to="/gallery">Create meme</Link>
+        <Link to="/settings">Settings</Link>
         <Link to="/" onClick={handleLogoutClick}>
           Logout
         </Link>
