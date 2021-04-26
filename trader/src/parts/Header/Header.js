@@ -22,7 +22,7 @@ const Header = () => {
   const setHeaderToLogin = (
     <nav className="header">
       <Link to="/main">
-        <h1>Meme Society</h1>
+        <h1>Trader</h1>
       </Link>
       <div className="headerLinks">
         <Link to="/login">Login</Link>
