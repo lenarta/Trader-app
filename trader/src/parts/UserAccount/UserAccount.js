@@ -51,7 +51,11 @@ const UserAccount = () => {
         <Papers />
         <Papers />
 
-        <p>useraccount</p>
+        <div className="userData">
+          <p>balance: 5000</p>
+          <p>equity: 5150</p>
+          <p>current P/L: 150</p>
+        </div>
       </div>
     </div>
   );

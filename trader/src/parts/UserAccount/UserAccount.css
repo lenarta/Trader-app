@@ -22,3 +22,11 @@ td {
   width: 100%;
   grid-column: 1 / 5;
 }
+.userData {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid blue;
+  border-collapse: collapse;
+  background-color: black;
+  text-align: left;
+}
