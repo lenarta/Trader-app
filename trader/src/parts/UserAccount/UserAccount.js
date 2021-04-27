@@ -5,7 +5,7 @@ import './UserAccount.css';
 
 const UserAccount = () => {
   const prices = useSelector((state) => state.trading.prices);
-  console.log(prices);
+  const ticker = 'GOOG';
 
   const Position = () => {
     return (
@@ -29,10 +29,10 @@ const UserAccount = () => {
       <table>
         <tbody>
           <tr className="positions">
-            <td>GOOG</td>
+            <td>{ticker}</td>
             <td>100</td>
             <td>1120</td>
-            <td>1150</td>
+            <td>{prices[ticker]}</td>
             <td>+30</td>
             <td>
               <button>close</button>
