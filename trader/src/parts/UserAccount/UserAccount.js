@@ -1,7 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import './UserAccount.css';
 
 const UserAccount = () => {
+  const prices = useSelector((state) => state.trading.prices);
+  console.log(prices);
+
   const Position = () => {
     return (
       <table className="tableHeader">
@@ -22,16 +27,18 @@ const UserAccount = () => {
   const Papers = () => {
     return (
       <table>
-        <tr className="positions">
-          <td>GOOG</td>
-          <td>100</td>
-          <td>1120</td>
-          <td>1150</td>
-          <td>+30</td>
-          <td>
-            <button>close</button>
-          </td>
-        </tr>
+        <tbody>
+          <tr className="positions">
+            <td>GOOG</td>
+            <td>100</td>
+            <td>1120</td>
+            <td>1150</td>
+            <td>+30</td>
+            <td>
+              <button>close</button>
+            </td>
+          </tr>
+        </tbody>
       </table>
     );
   };
