@@ -12,7 +12,6 @@ function Trading() {
   const [isErrorOccured, setIsErrorOccured] = useState(false);
   //const [apiData, setApiData] = useState([]);
   const prices = useSelector((state) => state.trading.prices);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,6 +34,7 @@ function Trading() {
       }
     };
     getApiData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return isErrorOccured ? (
