@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   ErrorComponent,
   LoadingComponent,
@@ -10,7 +10,8 @@ import './Trading.css';
 function Trading() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isErrorOccured, setIsErrorOccured] = useState(false);
-  const [apiData, setApiData] = useState ([]);
+  //const [apiData, setApiData] = useState([]);
+  const prices = useSelector((state) => state.trading.prices);
 
   const dispatch = useDispatch();
 
@@ -25,26 +26,25 @@ function Trading() {
         if (response.status !== 200) {
           throw Error(responseBody);
         }
-        setApiData(responseBody);
+        //setApiData(responseBody);
         setIsLoaded(true);
-        dispatch(addStocksData(apiData));
-
+        dispatch(addStocksData(responseBody));
       } catch (error) {
         console.log(error);
         setIsErrorOccured(true);
       }
     };
     getApiData();
-  }, [isLoaded]);
+  }, []);
 
   return isErrorOccured ? (
     <ErrorComponent />
   ) : isLoaded ? (
     <div className="trading-container">
-      <h1>Google {apiData[0].lastSalePrice}</h1>
-      <h1>Microsoft {apiData[1].lastSalePrice}</h1>
-      <h1>Twitter {apiData[2].lastSalePrice}</h1>
-      <h1>Facebook {apiData[3].lastSalePrice}</h1>
+      <h1>Google {prices.GOOG}</h1>
+      <h1>Microsoft {prices.MSFT}</h1>
+      <h1>Twitter {prices.TWTR}</h1>
+      <h1>Facebook {prices.FB}</h1>
     </div>
   ) : (
     <LoadingComponent />

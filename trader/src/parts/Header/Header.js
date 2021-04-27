@@ -40,7 +40,7 @@ const Header = () => {
         <h1>trader</h1>
       </Link>
       <div className="headerLinks">
-        <Link to="/memes"> {username} </Link>
+        {/* <Link to="/memes"> {username} </Link> */}
         <Link to="/settings">settings</Link>
         <Link to="/" onClick={handleLogoutClick}>
           logout
