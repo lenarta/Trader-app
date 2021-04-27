@@ -8,7 +8,8 @@ import {
 import Header from './parts/Header/Header';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
-import MainPanel from './parts/MainPanel/MainPanel'
+import MainPanel from './parts/MainPanel/MainPanel';
+import UserAccount from './parts/UserAccount/UserAccount';
 import './App.css';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           </Route>
           <Route path="/main">
             <MainPanel />
+            <UserAccount />
           </Route>
           <Route path="/register">
             <Register />
