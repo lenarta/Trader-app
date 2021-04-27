@@ -25,11 +25,11 @@ const Header = () => {
   const setHeaderToLogin = (
     <nav className="header">
       <Link to="/main">
-        <h1>Trader</h1>
+        <h1>trader</h1>
       </Link>
       <div className="headerLinks">
-        {location.pathname === '/register' && <Link to="/login">Login</Link>}
-        {location.pathname === '/login' && <Link to="/register">Register</Link>}
+        {location.pathname === '/register' && <Link to="/login">login</Link>}
+        {location.pathname === '/login' && <Link to="/register">register</Link>}
       </div>
     </nav>
   );
@@ -37,13 +37,13 @@ const Header = () => {
   const setHeaderToMain = (
     <nav className="header">
       <Link to="/main">
-        <h1>Welcome to Trader</h1>
+        <h1>trader</h1>
       </Link>
       <div className="headerLinks">
         <Link to="/memes"> {username} </Link>
-        <Link to="/settings">Settings</Link>
+        <Link to="/settings">settings</Link>
         <Link to="/" onClick={handleLogoutClick}>
-          Logout
+          logout
         </Link>
       </div>
     </nav>
