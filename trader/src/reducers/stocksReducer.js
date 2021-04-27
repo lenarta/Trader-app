@@ -13,9 +13,6 @@ function stocksReducer(state = initialState, action) {
       stocks: action.payload,
     };
   }
-  //if (action.type === DELETE_STORE) {
-    //return initialState;
-  //}
   return state;
 }
 

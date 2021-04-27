@@ -38,7 +38,6 @@ function MainPanel() {
       }
     };
     getApiData();
-    console.log(apiData);
   }, [isLoaded]);
 
   return isErrorOccured ? (

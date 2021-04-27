@@ -6,7 +6,7 @@ import stocksReducer from './reducers/stocksReducer';
 
 const rootReducer = combineReducers({
   login: loginReducer,
-  stocks: stocksReducer,
+  trading: stocksReducer,
 });
 
 const store = createStore(
