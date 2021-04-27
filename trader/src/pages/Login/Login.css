@@ -20,6 +20,7 @@
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.685);
   color: white;
+  border-radius: 5px;
 }
 [class*='login-input'] {
   background: white;
