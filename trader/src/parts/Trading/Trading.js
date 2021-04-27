@@ -1,20 +1,53 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  ErrorComponent,
+  LoadingComponent,
+} from '../ProcessMessages/ProcessMessages';
+import { addStocksData } from '../../actions/stocksDataActions';
 import './Trading.css';
 
 function Trading() {
-  const googleSalePrice = useSelector(state => state.trading.stocks[0].lastSalePrice);
-  const microsoftSalePrice = useSelector(state => state.trading.stocks[1].lastSalePrice);
-  const twitterSalePrice = useSelector(state => state.trading.stocks[2].lastSalePrice);
-  const facebookSalePrice = useSelector(state => state.trading.stocks[3].lastSalePrice);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isErrorOccured, setIsErrorOccured] = useState(false);
+  const [apiData, setApiData] = useState ([]);
 
-  return (
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getApiData = async () => {
+      const URL = process.env.REACT_APP_API_URL;
+
+      try {
+        const response = await fetch(URL);
+        const responseBody = await response.json();
+
+        if (response.status !== 200) {
+          throw Error(responseBody);
+        }
+        setApiData(responseBody);
+        setIsLoaded(true);
+        dispatch(addStocksData(apiData));
+
+      } catch (error) {
+        console.log(error);
+        setIsErrorOccured(true);
+      }
+    };
+    getApiData();
+  }, [isLoaded]);
+
+  return isErrorOccured ? (
+    <ErrorComponent />
+  ) : isLoaded ? (
     <div className="trading-container">
-      <h1>Google {googleSalePrice}</h1>
-      <h1>Microsoft {microsoftSalePrice}</h1>
-      <h1>Twitter {twitterSalePrice}</h1>
-      <h1>Facebook {facebookSalePrice}</h1>
+      <h1>Google {apiData[0].lastSalePrice}</h1>
+      <h1>Microsoft {apiData[1].lastSalePrice}</h1>
+      <h1>Twitter {apiData[2].lastSalePrice}</h1>
+      <h1>Facebook {apiData[3].lastSalePrice}</h1>
     </div>
+  ) : (
+    <LoadingComponent />
   );
 }
 
