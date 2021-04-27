@@ -8,6 +8,7 @@ import {
 import Header from './parts/Header/Header';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
+import MainPanel from './parts/MainPanel/MainPanel'
 import './App.css';
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
           <Route exact path="/">
             <Redirect to="/login" />
           </Route>
-          <Route path="/main"></Route>
+          <Route path="/main">
+            <MainPanel />
+          </Route>
           <Route path="/register">
             <Register />
           </Route>
