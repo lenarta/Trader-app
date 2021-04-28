@@ -7,7 +7,7 @@ import {
 const initialState = {
   token: `eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc2QiLCJleHAiOjE2MTk2NTM1MzQsImlhdCI6MTYxOTYxNzUzNH0.SBjdKXgstI3er3-qkgypD2d8jOuhdyGMToGr9Eoor0Y`,
   data: {
-    userName: '',
+    userName: 'tyty',
   },
 };
 

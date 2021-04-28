@@ -40,7 +40,7 @@ const UserAccount = () => {
       <table className="tableHeader">
         <tbody>
           <tr>
-            <th>tracker</th>
+            <th>ticker</th>
             <th>qty</th>
             <th>open price</th>
             <th>current price</th>
@@ -54,17 +54,19 @@ const UserAccount = () => {
 
   const Papers = ({ amount, type, buyInPrice, id }) => {
     return (
-      <table>
-        <tr className="position" id={id}>
-          <td>{type}</td>
-          <td>{amount}</td>
-          <td>{buyInPrice}</td>
-          <td>{prices[type]}</td>
-          <td>{(prices[type] - buyInPrice).toFixed(2)}</td>
-          <td>
-            <Pop />
-          </td>
-        </tr>
+      <table key={id}>
+        <tbody>
+          <tr className="position">
+            <td>{type}</td>
+            <td>{amount}</td>
+            <td>{buyInPrice}</td>
+            <td>{prices[type]}</td>
+            <td>{(prices[type] - buyInPrice).toFixed(2)}</td>
+            <td>
+              <Pop />
+            </td>
+          </tr>
+        </tbody>
       </table>
     );
   };
@@ -88,8 +90,13 @@ const UserAccount = () => {
           // eslint-disable-next-line no-const-assign
           profloss += prices[type] - buyInPrice;
           return (
-            <div>
-              <Papers amount={amount} type={type} buyInPrice={buyInPrice} />
+            <div key={id}>
+              <Papers
+                id={id}
+                amount={amount}
+                type={type}
+                buyInPrice={buyInPrice}
+              />
             </div>
           );
         })}
