@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import './UserAccount.css';
 
 const UserAccount = () => {
   const prices = useSelector((state) => state.trading.prices);
+  const [timer, setTimer] = useState(Date());
   const ticker = 'GOOG';
 
   const Position = () => {
@@ -43,6 +44,11 @@ const UserAccount = () => {
     );
   };
 
+  setInterval(() => {
+    setTimer(Date());
+    return timer.slice(0, 33);
+  }, 1000);
+
   return (
     <div className="accountContainer">
       <div className="userAccount">
@@ -52,7 +58,8 @@ const UserAccount = () => {
         <Papers />
 
         <div className="userData">
-          <p>balance: 5000</p>
+          <p>{timer.slice(0, 33)}</p>
+          <p>balance: 5000 </p>
           <p>equity: 5150</p>
           <p>current P/L: 150</p>
         </div>

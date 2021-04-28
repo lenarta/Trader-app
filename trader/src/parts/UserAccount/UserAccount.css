@@ -23,10 +23,13 @@ td {
   grid-column: 1 / 5;
 }
 .userData {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   border: 1px solid blue;
+  border-top: none;
   border-collapse: collapse;
   background-color: black;
-  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
 }
