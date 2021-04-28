@@ -18,8 +18,8 @@ export function stocksReducer(state = stockIinitialState, action) {
       prices: {
         GOOG: action.payload[0].lastSalePrice,
         MSFT: action.payload[1].lastSalePrice,
-        TWTR: action.payload[0].lastSalePrice,
-        FB: action.payload[0].lastSalePrice,
+        TWTR: action.payload[2].lastSalePrice,
+        FB: action.payload[3].lastSalePrice,
       },
     };
   }
