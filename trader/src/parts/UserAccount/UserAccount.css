@@ -22,3 +22,14 @@ td {
   width: 100%;
   grid-column: 1 / 5;
 }
+.userData {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid blue;
+  border-top: none;
+  border-collapse: collapse;
+  background-color: black;
+  padding-left: 20px;
+  padding-right: 20px;
+}
