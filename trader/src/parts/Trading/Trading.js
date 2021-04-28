@@ -40,10 +40,10 @@ function Trading() {
   ) : isLoaded ? (
     <div className="trading-container">
       <div className="stocks-info">
-        <h1>Google {prices.GOOG}</h1>
-        <h1>Microsoft {prices.MSFT}</h1>
-        <h1>Twitter {prices.TWTR}</h1>
-        <h1>Facebook {prices.FB}</h1>
+        <h2>Google {prices.GOOG}</h2>
+        <h2>Microsoft {prices.MSFT}</h2>
+        <h2>Twitter {prices.TWTR}</h2>
+        <h2>Facebook {prices.FB}</h2>
       </div>
       <div className="stocks-chart">
         <StockChart />

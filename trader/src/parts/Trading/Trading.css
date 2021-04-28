@@ -1,4 +1,8 @@
 .trading-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
   width: 100%;
+  height: 560px;
   border-radius: 0 0 3px 3px;
 }
