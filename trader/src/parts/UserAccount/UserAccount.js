@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
+import 'reactjs-popup/dist/index.css';
+import Timer from '../Clock/Clock';
+import Pop from '../Popup/Popup';
+import '../Popup/Popup.css';
 
 import './UserAccount.css';
 
 const UserAccount = () => {
   const prices = useSelector((state) => state.trading.prices);
-  const [timer, setTimer] = useState(Date());
   const ticker = 'GOOG';
 
   const Position = () => {
@@ -36,7 +39,7 @@ const UserAccount = () => {
             <td>{prices[ticker]}</td>
             <td>+30</td>
             <td>
-              <button>close</button>
+              <Pop />
             </td>
           </tr>
         </tbody>
@@ -44,10 +47,16 @@ const UserAccount = () => {
     );
   };
 
-  setInterval(() => {
-    setTimer(Date());
-    return timer.slice(0, 33);
-  }, 1000);
+  const UserData = () => {
+    return (
+      <div className="userData">
+        <Timer />
+        <p>balance: 5000 </p>
+        <p>equity: 5150</p>
+        <p>current P/L: 150</p>
+      </div>
+    );
+  };
 
   return (
     <div className="accountContainer">
@@ -56,12 +65,8 @@ const UserAccount = () => {
         <Papers />
         <Papers />
         <Papers />
-
-        <div className="userData">
-          <p>{timer.slice(0, 33)}</p>
-          <p>balance: 5000 </p>
-          <p>equity: 5150</p>
-          <p>current P/L: 150</p>
+        <div>
+          <UserData />
         </div>
       </div>
     </div>

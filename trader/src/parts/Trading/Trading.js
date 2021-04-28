@@ -10,7 +10,6 @@ import './Trading.css';
 function Trading() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isErrorOccured, setIsErrorOccured] = useState(false);
-  //const [apiData, setApiData] = useState([]);
   const prices = useSelector((state) => state.trading.prices);
   const dispatch = useDispatch();
 
@@ -24,7 +23,6 @@ function Trading() {
         if (response.status !== 200) {
           throw Error(responseBody);
         }
-        //setApiData(responseBody);
         setIsLoaded(true);
         dispatch(addStocksData(responseBody));
       } catch (error) {
