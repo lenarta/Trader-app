@@ -9,7 +9,31 @@ import './UserAccount.css';
 
 const UserAccount = () => {
   const prices = useSelector((state) => state.trading.prices);
-  const ticker = 'GOOG';
+  const data = {
+    balance: 1257,
+    stocks: [
+      {
+        amount: 3,
+        type: 'GOOG',
+        buyInPrice: 10.5,
+        id: 1,
+      },
+      {
+        amount: 6,
+        type: 'MSFT',
+        buyInPrice: 15,
+        id: 2,
+      },
+      {
+        amount: 21,
+        type: 'TWTR',
+        buyInPrice: 20,
+        id: 3,
+      },
+    ],
+  };
+
+  let profloss = 0;
 
   const Position = () => {
     return (
@@ -28,21 +52,19 @@ const UserAccount = () => {
     );
   };
 
-  const Papers = () => {
+  const Papers = ({ amount, type, buyInPrice, id }) => {
     return (
       <table>
-        <tbody>
-          <tr className="positions">
-            <td>{ticker}</td>
-            <td>100</td>
-            <td>1120</td>
-            <td>{prices[ticker]}</td>
-            <td>+30</td>
-            <td>
-              <Pop />
-            </td>
-          </tr>
-        </tbody>
+        <tr className="position" id={id}>
+          <td>{type}</td>
+          <td>{amount}</td>
+          <td>{buyInPrice}</td>
+          <td>{prices[type]}</td>
+          <td>{(prices[type] - buyInPrice).toFixed(2)}</td>
+          <td>
+            <Pop />
+          </td>
+        </tr>
       </table>
     );
   };
@@ -51,9 +73,9 @@ const UserAccount = () => {
     return (
       <div className="userData">
         <Timer />
-        <p>balance: 5000 </p>
-        <p>equity: 5150</p>
-        <p>current P/L: 150</p>
+        <p>balance: {data.balance}</p>
+        <p>equity: {(data.balance + profloss).toFixed(2)}</p>
+        <p>current P/L: {profloss.toFixed(2)}</p>
       </div>
     );
   };
@@ -62,9 +84,15 @@ const UserAccount = () => {
     <div className="accountContainer">
       <div className="userAccount">
         <Position />
-        <Papers />
-        <Papers />
-        <Papers />
+        {data.stocks.map(({ amount, type, buyInPrice, id }) => {
+          // eslint-disable-next-line no-const-assign
+          profloss += prices[type] - buyInPrice;
+          return (
+            <div>
+              <Papers amount={amount} type={type} buyInPrice={buyInPrice} />
+            </div>
+          );
+        })}
         <div>
           <UserData />
         </div>
