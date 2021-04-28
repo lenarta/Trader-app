@@ -16,8 +16,7 @@ function Trading() {
 
   useEffect(() => {
     const getApiData = async () => {
-      const URL = process.env.REACT_APP_API_URL;
-
+      const URL = `https://cloud.iexapis.com/stable/tops?token=${process.env.REACT_APP_API_KEY}&symbols=goog,msft,twtr,fb`;
       try {
         const response = await fetch(URL);
         const responseBody = await response.json();
