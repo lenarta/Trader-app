@@ -17,7 +17,7 @@ th,
 td {
   border: 1px solid blue;
   border-collapse: collapse;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.383);
   table-layout: fixed;
   width: 100%;
   grid-column: 1 / 5;
