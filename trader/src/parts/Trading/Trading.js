@@ -5,6 +5,7 @@ import {
   LoadingComponent,
 } from '../ProcessMessages/ProcessMessages';
 import { addStocksData } from '../../actions/stocksDataActions';
+import StockChart from '../StockChart/StockChart';
 import './Trading.css';
 
 function Trading() {
@@ -38,10 +39,15 @@ function Trading() {
     <ErrorComponent />
   ) : isLoaded ? (
     <div className="trading-container">
-      <h1>Google {prices.GOOG}</h1>
-      <h1>Microsoft {prices.MSFT}</h1>
-      <h1>Twitter {prices.TWTR}</h1>
-      <h1>Facebook {prices.FB}</h1>
+      <div className="stocks-info">
+        <h1>Google {prices.GOOG}</h1>
+        <h1>Microsoft {prices.MSFT}</h1>
+        <h1>Twitter {prices.TWTR}</h1>
+        <h1>Facebook {prices.FB}</h1>
+      </div>
+      <div className="stocks-chart">
+        <StockChart />
+      </div>
     </div>
   ) : (
     <LoadingComponent />
