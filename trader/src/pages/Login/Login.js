@@ -26,12 +26,11 @@ const Login = () => {
     console.log(URL);
 
     try {
-      const response = await fetch(`http://195.38.98.185:8080/login`, {
+      const response = await fetch(`http://178.48.165.230:8080/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
       });
-      console.log(userData);
 
       const responseBody = await response.json();
 
@@ -43,7 +42,7 @@ const Login = () => {
       });
       dispatch(loadUserToken(responseBody.token));
       dispatch(loadUserTokenPayload(decodedJWTToken.payload));
-      console.log(decodedJWTToken.payload);
+      //console.log(decodedJWTToken.payload);
       const cookie = new Cookies();
       cookie.set('accessToken', responseBody.token, {
         path: '/',
@@ -78,7 +77,7 @@ const Login = () => {
             type="password"
             required
             placeholder="Password"
-            minLength="8"
+            minLength="4"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
