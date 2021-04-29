@@ -2,16 +2,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  row-gap: 10px;
   align-items: center;
   width: 100%;
-  height: 600px;
+  height: 640px;
   border-radius: 0 0 3px 3px;
 }
 
 .stocks-info {
   display: grid;
-  grid-template-rows: 1fr;
-  row-gap: 20px;
+  grid-template-rows: 20px 300px;
 }
 
 p {
