@@ -21,6 +21,9 @@ function App() {
           <Route exact path="/">
             <Redirect to="/login" />
           </Route>
+          <Route exact path="/main">
+            <Redirect to="/main/trading" />
+          </Route>
           <Route path="/main">
             <MainPanel />
             <UserAccount />
