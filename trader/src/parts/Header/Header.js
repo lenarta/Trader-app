@@ -7,7 +7,7 @@ import './Header.css';
 
 const Header = () => {
   const cookie = new Cookies();
-  //const username = useSelector((state) => state.login.data.sub);
+  const username = useSelector((state) => state.login.data.userName);
   const token =
     useSelector((state) => state.login.token) ||
     localStorage.getItem('accessToken');
@@ -40,7 +40,7 @@ const Header = () => {
         <h1>trader</h1>
       </Link>
       <div className="headerLinks">
-        <Link to="/settings">settings</Link>
+        <Link to="/settings">{username || 'username'}</Link>
         <Link to="/" onClick={handleLogoutClick}>
           logout
         </Link>

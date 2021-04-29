@@ -8,29 +8,47 @@ import '../Popup/Popup.css';
 import './UserAccount.css';
 
 const UserAccount = () => {
+  /* const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [inputStatus, setInputStatus] = useState('login-input-OK'); */
+
   const prices = useSelector((state) => state.trading.prices);
+
   const data = {
     balance: 1257,
     stocks: [
       {
-        amount: 3,
-        type: 'GOOG',
-        buyInPrice: 10.5,
-        id: 1,
-      },
-      {
-        amount: 6,
+        amount: 2,
         type: 'MSFT',
-        buyInPrice: 15,
+        buyInPrice: 253.295,
         id: 2,
       },
       {
-        amount: 21,
+        amount: 10,
         type: 'TWTR',
-        buyInPrice: 20,
-        id: 3,
+        buyInPrice: 66.05,
+        id: 4,
+      },
+      {
+        amount: 6,
+        type: 'GOOG',
+        buyInPrice: 2434.55,
+        id: 6,
+      },
+      {
+        amount: 85,
+        type: 'FB',
+        buyInPrice: 306.55,
+        id: 7,
       },
     ],
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    console.log('data', data);
   };
 
   let profloss = 0;
@@ -40,7 +58,7 @@ const UserAccount = () => {
       <table className="tableHeader">
         <tbody>
           <tr>
-            <th>tracker</th>
+            <th>ticker</th>
             <th>qty</th>
             <th>open price</th>
             <th>current price</th>
@@ -54,17 +72,27 @@ const UserAccount = () => {
 
   const Papers = ({ amount, type, buyInPrice, id }) => {
     return (
-      <table>
-        <tr className="position" id={id}>
-          <td>{type}</td>
-          <td>{amount}</td>
-          <td>{buyInPrice}</td>
-          <td>{prices[type]}</td>
-          <td>{(prices[type] - buyInPrice).toFixed(2)}</td>
-          <td>
-            <Pop />
-          </td>
-        </tr>
+      <table key={id}>
+        <tbody>
+          <tr className="position">
+            <td>{type}</td>
+            <td>{amount}</td>
+            <td>{buyInPrice}</td>
+            <td>{prices[type]}</td>
+            <td>{(prices[type] - buyInPrice).toFixed(2)}</td>
+            <td>
+              <Pop
+                id={id}
+                order="sell"
+                amount={amount}
+                tick={type}
+                buyInPrice={buyInPrice}
+                sellPrice={prices[type]}
+                handleSubmit={handleSubmit}
+              />
+            </td>
+          </tr>
+        </tbody>
       </table>
     );
   };
@@ -88,8 +116,13 @@ const UserAccount = () => {
           // eslint-disable-next-line no-const-assign
           profloss += prices[type] - buyInPrice;
           return (
-            <div>
-              <Papers amount={amount} type={type} buyInPrice={buyInPrice} />
+            <div key={id}>
+              <Papers
+                id={id}
+                amount={amount}
+                type={type}
+                buyInPrice={buyInPrice}
+              />
             </div>
           );
         })}

@@ -1,7 +1,7 @@
 import React from 'react';
 import Popup from 'reactjs-popup';
 
-const Pop = () => (
+const Pop = ({ id, amount, tick, buyInPrice, sellPrice, handleSubmit }) => (
   <Popup
     trigger={
       <button className="button" onClick={(e) => console.log(e.target)}>
@@ -14,43 +14,62 @@ const Pop = () => (
   >
     {(close) => (
       <div className="modal">
-        {/* <button className="close" onClick={close}>
-          &times;
-        </button> */}
-        <div className="content">
-          {' '}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a
-          nostrum. Dolorem, repellat quidem ut, minima sint vel eveniet
-          quibusdam voluptates delectus doloremque, explicabo tempore dicta
-          adipisci fugit amet dignissimos?
-          <br />
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur
-          sit commodi beatae optio voluptatum sed eius cumque, delectus saepe
-          repudiandae explicabo nemo nam libero ad, doloribus, voluptas rem
-          alias. Vitae?
-        </div>
-        <div className="actions">
-          <Popup
-            trigger={<button className="popup-button"> confirm </button>}
-            position="top center"
-            nested
-          >
-            <span>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-              magni omnis delectus nemo, maxime molestiae dolorem numquam
-              mollitia, voluptate ea, accusamus excepturi deleniti ratione
-              sapiente! Laudantium, aperiam doloribus. Odit, aut.
-            </span>
-          </Popup>
-          <button
-            className="popup-button"
-            onClick={() => {
-              console.log('modal closed ');
-              close();
-            }}
-          >
-            skip
-          </button>
+        <div className="popcontent">
+          <h1 className="order">place order</h1>
+          <form className="order-form" onSubmit={handleSubmit}>
+            <label for="order">
+              type:
+              <select>
+                <option defaultValue="sell">sell</option>
+                <option value="buy">buy</option>
+              </select>
+            </label>
+            <br />
+            <label htmlFor="ticker">
+              ticker:
+              <input
+                type="text"
+                id="ticker"
+                name="ticker"
+                required
+                defaultValue={tick}
+              />
+            </label>
+            <br />
+            <label htmlFor="amount">
+              amount:
+              <input type="number" defaultValue={amount} min="1" max={amount} />
+            </label>
+            <br />
+            <label htmlFor="saleprice">
+              sale price:
+              <input type="any" defaultValue={sellPrice} min="1" />
+            </label>
+            <br />
+            {/* <div htmlFor="posid">position id: {id}</div> */}
+            <div className="actions">
+              <button type="submit" className="popup-button">
+                confirm
+              </button>
+
+              <button
+                className="popup-button"
+                onClick={() => {
+                  console.log('modal closed ');
+                  close();
+                }}
+              >
+                skip
+              </button>
+            </div>
+          </form>
+          {/* <div className="errorBox">
+            {
+              <div className="input-error-message">
+                <i className="material-icons">warning</i>
+              </div>
+            }
+          </div> */}
         </div>
       </div>
     )}
