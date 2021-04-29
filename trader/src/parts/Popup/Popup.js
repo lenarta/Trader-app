@@ -4,7 +4,7 @@ import Popup from 'reactjs-popup';
 const Pop = ({ id, amount, tick, buyInPrice, sellPrice, handleSubmit }) => (
   <Popup
     trigger={
-      <button className="button" onClick={(e) => console.log(e.target)}>
+      <button className="close-button" onClick={(e) => console.log(e.target)}>
         {' '}
         close{' '}
       </button>
@@ -28,6 +28,7 @@ const Pop = ({ id, amount, tick, buyInPrice, sellPrice, handleSubmit }) => (
             <label htmlFor="ticker">
               ticker:
               <input
+                className="popinput"
                 type="text"
                 id="ticker"
                 name="ticker"
@@ -38,15 +39,25 @@ const Pop = ({ id, amount, tick, buyInPrice, sellPrice, handleSubmit }) => (
             <br />
             <label htmlFor="amount">
               amount:
-              <input type="number" defaultValue={amount} min="1" max={amount} />
+              <input
+                className="popinput"
+                type="number"
+                defaultValue={amount}
+                min="1"
+                max={amount}
+              />
             </label>
             <br />
             <label htmlFor="saleprice">
               sale price:
-              <input type="any" defaultValue={sellPrice} min="1" />
+              <input
+                className="popinput"
+                type="any"
+                defaultValue={sellPrice}
+                min="1"
+              />
             </label>
             <br />
-            {/* <div htmlFor="posid">position id: {id}</div> */}
             <div className="actions">
               <button type="submit" className="popup-button">
                 confirm

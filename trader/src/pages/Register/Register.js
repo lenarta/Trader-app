@@ -17,7 +17,7 @@ const Register = () => {
     console.log(userData, URL); */
 
     try {
-      const response = await fetch(`http://178.48.165.230:8080/register`, {
+      const response = await fetch(`http://195.38.98.185:8080/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),

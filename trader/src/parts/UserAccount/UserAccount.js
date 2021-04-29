@@ -8,11 +8,6 @@ import '../Popup/Popup.css';
 import './UserAccount.css';
 
 const UserAccount = () => {
-  /* const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-  const [inputStatus, setInputStatus] = useState('login-input-OK'); */
-
   const prices = useSelector((state) => state.trading.prices);
 
   const data = {
