@@ -26,7 +26,7 @@ const Login = () => {
     console.log(URL);
 
     try {
-      const response = await fetch(`http://212.40.79.17:8080/login`, {
+      const response = await fetch(`http://195.38.98.185:8080/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
@@ -48,7 +48,7 @@ const Login = () => {
       cookie.set('accessToken', responseBody.token, {
         path: '/',
       });
-      history.push('/main');
+      history.push('/main/trading');
     } catch (err) {
       console.log(err.message);
       setError(err.message);
